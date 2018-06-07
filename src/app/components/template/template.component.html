@@ -76,6 +76,55 @@
   </div>
 
   <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-md-8">
+      <select
+        [(ngModel)]="usuario.pais"
+        class="form-control"
+        name="pais" id="">
+        <option value="">Seleccione un pais</option>
+        <option *ngFor="let pais of paises"
+          [value]="pais.codigo">{{ pais.nombre }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sexo</label>
+    <div class="col-md-8">
+
+      <div *ngFor="let s of sexos "
+        class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input  [(ngModel)]="usuario.sexo"
+                  class="form-check-input"
+                  type="radio"
+                  [value]="s"
+                  name="sexo"> {{ s }}
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"></label>
+    <div class="col-md-8">
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            [(ngModel)]="usuario.acepta"
+            name="acepta"
+            required
+            type="checkbox" class="form-check-input"> <span>Acepta las condiciones</span>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
       <button
@@ -87,3 +136,8 @@
   </div>
 
 </form>
+
+
+<pre>
+  {{ usuario | json }}
+</pre>
